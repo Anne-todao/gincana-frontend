@@ -1,0 +1,28 @@
+.container {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.barraFundo {
+  background-color: #e0e0e0;
+  width: 100%;
+}
+
+.barraProgresso {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid #333;
+  padding: 8px;
+  text-align: left;
+}

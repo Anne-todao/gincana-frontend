@@ -1,0 +1,20 @@
+.botaoGincana {
+  background-color: #e30613;
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%; /* Ocupa a largura do formulário onde for inserido */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.botaoGincana:hover {
+  background-color: #c20510;
+}
+
+.botaoGincana:active {
+  transform: scale(0.98);
+}
