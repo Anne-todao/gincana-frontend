@@ -8,7 +8,7 @@ function Login (){
             <form className={styles.loginForm}>
                <input type="email" placeholder="Email" className={styles.loginInput} />
                <input type="password" placeholder="Password" className={styles.loginInput} />
-                <Link to="/home">
+                                <Link to="/dashboard">
           <button type="button" className={styles.loginButton}>Entrar</button>
         </Link>
             </form>

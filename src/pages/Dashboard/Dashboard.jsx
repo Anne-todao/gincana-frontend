@@ -1,8 +1,13 @@
+
 import styles from './Dashboard.module.css';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Dashboard() {
     return (
+        <div>
+             <Navbar />
         <div className={styles.container}>
+           
             <h1>Dashboard da Gincana</h1>
 
             <section>
@@ -53,6 +58,7 @@ export default function Dashboard() {
                     </tbody>
                 </table>
             </section>
+        </div>
         </div>
     );
 }

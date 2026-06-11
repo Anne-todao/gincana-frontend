@@ -23,7 +23,7 @@ export default function App() {
           <input type="email" placeholder="Email" />
           <input type="password" placeholder="Senha" />
 
-          <Link to="/">
+          <Link to="/dashboard">
           <button type="button" className={styles.loginButton}>Entrar</button>
         </Link>
 
