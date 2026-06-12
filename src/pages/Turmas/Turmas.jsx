@@ -1,23 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { cadastrarTurma, listarTurmas } from '../../services/api';
 import BotaoGincana from '../../components/BotaoGincana/BotaoGincana';
 import styles from './Turma.module.css';
 
-function Turmas() {
+export default function Turmas() {
   const [turmas, setTurmas] = useState([]);
   const [nomeTurma, setNomeTurma] = useState('');
   const [cursoIdentificacao, setCursoIdentificacao] = useState('');
 
-  const CadastrarTurma = (e) => {
+  useEffect(() => {
+    const carregarTurmas = async () => {
+      try {
+        const turmasCadastradas = await listarTurmas();
+        setTurmas(turmasCadastradas);
+      } catch (error) {
+        console.error('Erro ao carregar as turmas:', error);
+      }
+    };
+
+    carregarTurmas();
+  }, []);
+
+const CadastrarTurma = async (e) => {
     e.preventDefault();
 
-    const novaTurma = {
-      id: Math.floor(Math.random() * 900) + 100,
-      nome: nomeTurma,
-      curso: cursoIdentificacao
-    };
-    setTurmas([...turmas, novaTurma]);
-    setNomeTurma('');
-    setCursoIdentificacao('');
+    try {
+      const turmaCriada = await cadastrarTurma({
+        nome: nomeTurma,
+        curso: cursoIdentificacao
+      });
+
+      setTurmas((turmasAtuais) => [...turmasAtuais, turmaCriada]);
+      
+      setNomeTurma('');
+      setCursoIdentificacao('');
+
+      alert('Turma cadastrada com sucesso! 🎉');
+      
+    } catch (error) {
+      alert('Erro ao cadastrar a turma. 😢');
+      console.error(error);
+    }
   };
 
   return (
@@ -70,7 +93,7 @@ function Turmas() {
             <h2>Turmas Ativas na Gincana</h2>
             {turmas.length === 0 ? (
             <div className={styles.emptyState}>
-                <p>Nenhuma turma cadastrada ainda. O cliente verá as turmas aqui assim que preencher o formulário acima!</p>
+              <p>Nenhuma turma cadastrada ainda. As turmas aparecem aqui assim que forem carregadas da API.</p>
             </div>
         ) : (
             <table className={styles.turmasTable}>
@@ -98,4 +121,3 @@ function Turmas() {
         );
     }
 
-export default Turmas;

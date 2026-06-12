@@ -1,90 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-.loginContainer {
-  background-color: #ffffff;
-  max-width: 400px;
-  width: 100%;
-  margin: 8% auto;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); 
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-
-.loginTitle {
-  margin: 0 0 2rem 0;
-  color: #2b2b2b;
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.loginForm {
+.container {
   display: flex;
-  flex-direction: column;
-  gap: 1.2rem; 
+  min-height: 100vh;
+}
+.loginBox p {
+  margin-bottom: 40px;
+  color: #555;
+  font-size: 1.25rem;
 }
 
+.registerLink span {
+  color: #555;
+  font-size: 1.25rem;
+}
+
+.registerLink  a {
+  color: #ce0c0c;
+  text-decoration: none;
+  font-weight: bold;
+}
+.registerLink  a:hover {
+  color: #ce0c0c;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.leftPanel {
+  flex: 1;
+  background: linear-gradient(180deg, #003da5, #00256d);
+  color: rgb(241, 232, 218);
+  position: relative;
+  padding: 40px;
+}
+
+.senaiBadge {
+  background: #e30613;
+  color: white;
+  width: 110px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.leftContent {
+  margin-top: 105px;
+}
+
+.leftContent h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
+
+.leftContent h2 {
+  font-size: 6rem;
+}
+
+
+.rightPanel {
+  flex: 1;
+  background: #cfcfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox {
+  width: 100%;
+  max-width: 650px;
+  padding: 40px;
+  background: #cfcfcf;
+  border-radius: 12px;
+}
+
+.loginBox h1 {
+  font-size: 4rem;
+  margin-bottom: 5px;
+}
+
+.loginBox p {
+  margin-bottom: 40px;
+  color: #555;
+}
+
+.loginBox input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+}
+
+.loginBox button {
+  width: 100%;
+  padding: 15px;
+  background: #003da5;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quickAccess {
+  margin-top: 40px;
+}
+
+.quickAccess h3 {
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.quickBtn {
+  background: #f3f3f3 !important;
+  color: #555 !important;
+  margin-bottom: 10px;
+}
+
+.acessRap {
+  margin-top: 40px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+}
+
+.acessButton {
+  background: #cfcfcf !important;
+  color: #555 !important;
+  margin-right: 10px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.acessButton a {
+  text-decoration: none;
+  color: inherit;
+}
 
 .loginInput {
-  width: 100%;
-  padding: 0.85rem 1rem;
-  font-size: 0.95rem;
-  border: 1px solid #cccccc;
-  border-radius: 6px;
-  outline: none;
-  background-color: #f9f9f9;
-  transition: all 0.2s ease-in-out;
-  box-sizing: border-box;
+  border-radius: 12px;
 }
 
-
-.loginInput:focus {
-  border-color: #164194;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1); 
+.loginButton{
+  background: #ff0000 !important;
 }
-
-.loginButton {
-  background-color: #e30613;
-  color: #ffffff;
-  border: none;
-  padding: 0.9rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
-}
-
-
-.loginButton:hover {
-  background-color: #c20510; 
-}
-
-.loginButton:active {
-  transform: scale(0.98); 
+.loginButton a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .registerLink {
-  margin-top: 1.5rem;
+  margin-top: 20px;
   text-align: center;
-  font-size: 0.9rem;
-  color: #666666;
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
 }
 
 
-.registerAnchor {
-  color: #e30613;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease;
+.desc p{
+  display: inline-block;
+  margin-top: 50px;
+  margin-right: 70px;
+  max-width: 500px;
 }
 
-.registerAnchor:hover {
-  text-decoration: underline;
-  color: #c20510;
+.spanFin{
+  text-align: center;
 }

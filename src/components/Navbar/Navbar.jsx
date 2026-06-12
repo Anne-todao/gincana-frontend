@@ -1,28 +1,44 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './Navbar.module.css';
 
 function Navbar () {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <nav className={style.navbar}>
-      <div className={style.container}>
-        
-        <h1 className={style['nav-title']}>projeto Integrador</h1>
+    <>
+      
+      <button className={style.menuButton} onClick={toggleMenu}>
+        {isOpen ? '✕' : '☰'} 
+      </button>
 
-        <ul className={style['nav-links']}>
-          <li><Link className={style['nav-link']} to="/">Home</Link></li>
-          <li><Link className={style['nav-link']} to="/turmas">Turmas</Link></li>
-          <li><Link className={style['nav-link']} to="/doacoes">Doações</Link></li>
-          <li><Link className={style['nav-link']} to="/dashboard">Dashboard</Link></li>
-          <li><Link className={style['nav-link']} to="/login">Login</Link></li>
-        </ul>
+      <nav className={`${style.navbar} ${isOpen ? style.open : ''}`}>
+        <div className={style.container}>
+          <h1 className={style['nav-title']}>Projeto Integrador</h1>
 
-      </div>
-    <div className={style.subnavBackground}>
-        <div className={style.container2}>
-            <span>Gincana</span> 
+          <ul className={style['nav-links']}>
+            <li><Link className={style['nav-link']} to="/" onClick={toggleMenu}>Início</Link></li>
+            <li><Link className={style['nav-link']} to="/turmas" onClick={toggleMenu}>Turmas</Link></li>
+            <li><Link className={style['nav-link']} to="/doacoes" onClick={toggleMenu}>Doações</Link></li>
+            <li><Link className={style['nav-link']} to="/dashboard" onClick={toggleMenu}>Dashboard</Link></li>
+            <li><Link className={style['nav-link']} to="/login" onClick={toggleMenu}>Login</Link></li>
+          </ul>
         </div>
-    </div>
-    </nav>
+
+        <div className={style.subnavBackground}>
+          <div className={style.container2}>
+              <span>Gincana 2026</span> 
+          </div>
+        </div>
+      </nav>
+
+
+      {isOpen && <div className={style.overlay} onClick={toggleMenu}></div>}
+    </>
   )
 }   
 

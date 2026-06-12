@@ -1,0 +1,113 @@
+.carrosselContainer {
+  position: relative;
+  max-width: 800px; /* Altere para o tamanho máximo que quiser no seu site */
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Esconde as fotos que estão fora do foco */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background-color: #000;
+}
+
+/* Linha contínua que segura todos os slides lado a lado */
+.carrosselTrack {
+  display: flex;
+  width: 100%;
+  height: 400px; /* Altura padrão do seu carrossel */
+  transition: transform 0.5s ease-in-out; /* Faz o efeito de deslizar */
+}
+
+/* Cada slide individual ocupa exatamente 100% do container */
+.slide {
+  min-width: 100%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer ou amassar */
+}
+
+/* Caixa de texto preta semi-transparente sobre a foto */
+.legenda {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  color: #fff;
+  padding: 30px 20px 40px 20px;
+  text-align: left;
+}
+
+.legenda h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.legenda p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Botões de Setas Laterais */
+.botaoSetas {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.2s, scale 0.1s;
+  z-index: 10;
+}
+
+.botaoSetas:hover {
+  background-color: rgba(255, 0, 0, 0.8); /* Vermelho SENAI ao passar o mouse */
+  scale: 1.05;
+}
+
+.setaEsquerda {
+  left: 15px;
+}
+
+.setaDireita {
+  right: 15px;
+}
+
+/* Container das bolinhas inferiores */
+.indicadoresContainer {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.bolinha {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.bolinhaAtiva {
+  background-color: #ff0000; /* Destaca a bolinha ativa em Vermelho */
+  width: 24px; /* Efeito esticadinho moderno */
+  border-radius: 5px;
+}
