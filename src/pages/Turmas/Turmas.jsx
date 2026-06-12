@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { cadastrarTurma, listarTurmas } from '../../services/api';
 import BotaoGincana from '../../components/BotaoGincana/BotaoGincana';
 import styles from './Turma.module.css';
+import Navbar from '../../components/Navbar/Navbar';
 
 export default function Turmas() {
   const [turmas, setTurmas] = useState([]);
@@ -45,7 +46,7 @@ const CadastrarTurma = async (e) => {
 
   return (
     <div className={styles.pageBackground}>
-      
+      <Navbar />
       <main className={styles.contentContainer}>
         <div className={styles.headerSection}>
           <p className={styles.sectionTag}>PAINEL ADMINISTRATIVO</p>
