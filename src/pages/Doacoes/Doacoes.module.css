@@ -1,15 +1,8 @@
-.layout{
-   flex: 1;
-  overflow-y: auto;
-   margin-left: 20px;
-}
-
-
 .dashboardContainer {
   display: flex;
   min-height: 100vh;
   background-color: #eef2f5;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', Montserrat, Helvetica, Arial, sans-serif;
 }
 
 .mainContent {
@@ -19,7 +12,6 @@
   flex-direction: column;
   gap: 24px;
 }
-
 
 .headerPage h2 {
   font-size: 28px;
@@ -185,14 +177,23 @@
   border-bottom-right-radius: 12px;
 }
 
-.row:nth-child(3n+1) { background-color: #fef08a; } 
-.row:nth-child(3n+2) { background-color: #bae6fd; } 
-.row:nth-child(3n+3) { background-color: #fecaca; } 
+.rowPrimeiro {
+  background-color: #fef08a; 
+}
+.rowSegundo {
+  background-color: #bae6fd;
+}
+.rowTerceiro {
+  background-color: #fecaca;
+}
+.rowCinza {
+  background-color: #afb0b1; 
+}
 
 .noData {
   text-align: center;
   color: #a0aec0;
-  padding: 30px !important;
+  padding: 30px ;
 }
 
 .acoesCell {

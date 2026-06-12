@@ -1,23 +1,22 @@
 .carrosselContainer {
   position: relative;
-  max-width: 800px; /* Altere para o tamanho máximo que quiser no seu site */
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  overflow: hidden; /* Esconde as fotos que estão fora do foco */
+  overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   background-color: #000;
 }
 
-/* Linha contínua que segura todos os slides lado a lado */
+
 .carrosselTrack {
   display: flex;
   width: 100%;
-  height: 400px; /* Altura padrão do seu carrossel */
-  transition: transform 0.5s ease-in-out; /* Faz o efeito de deslizar */
+  height: 400px;
+  transition: transform 0.5s ease-in-out; 
 }
 
-/* Cada slide individual ocupa exatamente 100% do container */
 .slide {
   min-width: 100%;
   width: 100%;
@@ -28,10 +27,10 @@
 .imagem {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer ou amassar */
+  object-fit: cover;
 }
 
-/* Caixa de texto preta semi-transparente sobre a foto */
+
 .legenda {
   position: absolute;
   bottom: 0;
@@ -55,7 +54,6 @@
   opacity: 0.9;
 }
 
-/* Botões de Setas Laterais */
 .botaoSetas {
   position: absolute;
   top: 50%;
@@ -72,8 +70,7 @@
 }
 
 .botaoSetas:hover {
-  background-color: rgba(255, 0, 0, 0.8); /* Vermelho SENAI ao passar o mouse */
-  scale: 1.05;
+  background-color: rgba(255, 0, 0, 0.8); 
 }
 
 .setaEsquerda {
@@ -84,7 +81,7 @@
   right: 15px;
 }
 
-/* Container das bolinhas inferiores */
+
 .indicadoresContainer {
   position: absolute;
   bottom: 15px;
@@ -107,7 +104,7 @@
 }
 
 .bolinhaAtiva {
-  background-color: #ff0000; /* Destaca a bolinha ativa em Vermelho */
-  width: 24px; /* Efeito esticadinho moderno */
+  background-color: #ff0000; 
+  width: 24px;
   border-radius: 5px;
 }

@@ -7,6 +7,8 @@ function Doacoes() {
   const [fraldas, setFraldas] = useState('');
   const [listaDoacoes, setListaDoacoes] = useState([]);
 
+  const listaOrdenada = listaDoacoes;
+  
   const Salvar = (e) => {
     e.preventDefault();
     if (!turma) {
@@ -41,7 +43,6 @@ function Doacoes() {
    };
 
   return (
-    <div className={styles.layout}>
     <div className={styles.dashboardContainer}>
       <Navbar />
       <main className={styles.mainContent}>
@@ -81,8 +82,6 @@ function Doacoes() {
               >
                 <option value="" disabled>Selecionar uma turma</option>
                 <option value="2TDS">2TDS</option>
-                <option value="1TDS">1TDS</option>
-                <option value="3TDS">3TDS</option>
               </select>
             </div>      
 
@@ -119,32 +118,38 @@ function Doacoes() {
                   <th>Ações</th>
                 </tr>
               </thead>
-              <tbody>
-                {listaDoacoes.length === 0 ? (
+              <body>
+  {listaOrdenada.length === 0 ? (
                   <tr>
-                    <td colSpan="4" className={styles.noData}>Nenhuma doação registrada ainda.</td>
+                    <td colSpan="5" className={styles.noData}>Nenhuma doação registrada ainda.</td>
                   </tr>
                 ) : (
-                  listaDoacoes.map((item) => (
-                    <tr key={item.id} className={styles.row}>
-                      <td>{item.turma}</td>
-                      <td>{item.quantidade}</td>
-                      <td>{item.validade}</td> 
-                      <td>
-                        <div className={styles.acoesCell}>
-                          <span>{item.responsavel}</span>
-                          <button 
-                            className={styles.btnExcluir} 
-                            onClick={() => deletarDoacao(item.id)}
-                          >
-                            EXCLUIR
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
+                  listaOrdenada.map((item, index) => {
+                    let classePosicao = styles.rowCinza;
+                    if (index === 1) classePosicao = styles.rowSegundo; 
+                    if (index === 2) classePosicao = styles.rowTerceiro; 
+                    return (
+                      <tr key={item.id} className={`${styles.row} ${classePosicao}`}>
+                        <td style={{ fontWeight: 'bold' }}>{index + 1}</td> =
+                        <td>{item.turma}</td>
+                        <td>{item.quantidade}</td>
+                        <td>{item.validade}</td>
+                        <td>
+                          <div className={styles.acoesCell}>
+                            <span>{item.responsavel}</span>
+                            <button 
+                              className={styles.btnExcluir} 
+                              onClick={() => deletarDoacao(item.id)}
+                            >
+                              EXCLUIR
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
                 )}
-              </tbody>
+              </body>
             </table>
           </div>
 
@@ -153,7 +158,6 @@ function Doacoes() {
         <button type="submit" onClick={Salvar} className={styles.btnSalvar}>Salvar</button>
 
       </main>
-    </div>
     </div>
   );
 }
