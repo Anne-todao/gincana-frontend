@@ -1,27 +1,33 @@
 import { useState, useEffect } from 'react';
-import { buscarRanking } from '../../services/api';
+import { buscarRanking } from '../../services/api'; 
 import styles from './Dashboard.module.css';
 import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer'
+import Footer from '../../components/Footer/Footer';
 
 export default function Dashboard() {
     const [ranking, setRanking] = useState([]);
-    
-    // Variáveis de controle para o progresso dinâmico (opcional)
-    const arrecadado = 200;
-    const metaGlobal = 1000;
-    const percentualProgresso = Math.min((arrecadado / metaGlobal) * 100, 100);
+    const [arrecadado, setArrecadado] = useState(0);
+    const [metaGlobal] = useState(1000); 
+    const [turmaLider, setTurmaLider] = useState('Carregando...');
+
+    const percentualProgresso = metaGlobal > 0 ? Math.min((arrecadado / metaGlobal) * 100, 100) : 0;
 
     useEffect(() => {
-        async function carregarRanking() {
+        async function carregarDadosDoDashboard() {
             try {
                 const rankingCarregado = await buscarRanking();
                 setRanking(rankingCarregado);
+
+                if (rankingCarregado && rankingCarregado.length > 0) {
+                    const totalFraldas = rankingCarregado.reduce((acc, equipe) => acc + (equipe.fraldas || 0), 0);
+                    setArrecadado(totalFraldas);
+                    setTurmaLider(rankingCarregado[0].turma || 'Nenhuma');
+                }
             } catch (erro) {
-                console.error('Ops! Erro ao carregar o ranking:', erro);
+                console.error('Ops! Erro ao carregar os dados do painel:', erro);
             }
         }
-        carregarRanking();
+        carregarDadosDoDashboard();
     }, []);
 
     const obterClassePosicao = (index) => {
@@ -67,7 +73,7 @@ export default function Dashboard() {
                         <div className={styles.cardIcon}>🚀</div>
                         <div className={styles.cardInfo}>
                             <span className={styles.cardLabel}>Turma Líder</span>
-                            <span className={styles.cardValue}>Turma B</span>
+                            <span className={styles.cardValue}>{turmaLider}</span>
                         </div>
                     </article>
                 </section>
@@ -109,7 +115,7 @@ export default function Dashboard() {
                                             </span>
                                         </div>
                                         <div className={styles.celula}>
-                                            {equipe.turma || 'Turma Exemplo'}
+                                            {equipe.turma || 'Turma Sem Nome'}
                                         </div>
                                         <div className={styles.celula}>{equipe.fraldas || 0}</div>
                                         <div className={styles.celula}>
@@ -128,7 +134,6 @@ export default function Dashboard() {
                     </div>
                 </section>
             </main>
-       
         </div>
         <Footer /> 
         </>
