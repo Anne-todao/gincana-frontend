@@ -1,18 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import Inicial from './pages/Inicial/Inicial';
 import Turmas from './pages/Turmas/Turmas';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Doacoes from './pages/Doacoes/Doacoes';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
-
-
+import SobreNos from './pages/SobreNos/SobreNos';
+import GerenciarOngs from './pages/GerenciarOngs/GerenciarOngs';
+import Configuracoes from './pages/Configuracoes/Configuracoes';
 
 
 function App() {
   return (
-
     <BrowserRouter>
         <Routes>
         <Route path="/" element={<Inicial />} />
@@ -21,6 +20,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/doacoes" element={<Doacoes />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/sobreNos" element={<SobreNos />} />
+        <Route path="/gerenciarOngs" element={<GerenciarOngs />} />
+        <Route path="/configuracoes" element={<Configuracoes />} />
         </Routes>
     </BrowserRouter>
   );

@@ -1,79 +1,99 @@
 .footer {
-  background-color: #b91d32; 
+  background-color: #060e3d; /* Azul escuro bem fechado, perfeito para fundo de footer */
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   width: 100%;
-  padding: 2rem 0 1rem 0;
+  padding: 2rem 0 0 0;
   margin-top: auto; 
+  box-sizing: border-box;
+}
 
+.subFooter {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  padding: 0 2rem;
+  gap: 2rem;
+  box-sizing: border-box;
+}
 
-  .subFooter {
-    display: flex;
-    justify-content: space-between; 
-    align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto 2rem auto;
-    padding: 0 2rem;
-    gap: 2rem;
+.esquerda, 
+.direita {
+  flex: 1; 
+}
 
-    
-    .esquerda, .direita {
-      flex: 1; 
+.esquerda h2,
+.direita h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff; /* Mudado para branco para dar leitura perfeita sobre o fundo escuro */
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+  margin-top: 0;
+}
 
-      h2 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #000000; 
-        margin-bottom: 0.8rem;
-        letter-spacing: 0.5px;
-      }
+.esquerda p,
+.direita p {
+  font-size: 0.9rem;
+  color: #cbd5e1; /* Um cinza claro suave que não agride os olhos no fundo escuro */
+  margin: 0.4rem 0;
+  line-height: 1.4;
+}
 
-      p {
-        font-size: 0.9rem;
-        color: #cccccc; 
-        margin: 0.4rem 0;
-        line-height: 1.4;
-      }
-    }
+.direita {
+  text-align: right;
+}
 
-   
-    .direita {
-      text-align: right;
-    }
+.container {
+  max-width: 100%; 
+  margin: 0 auto;
+  padding: 1.2rem 2rem;
+  text-align: center;
+  background-color: #0b1a6e; /* O azul oficial das suas páginas agora fecha o rodapé */
+  box-sizing: border-box;
+}
+
+.container p {
+  font-size: 0.95rem;
+  color: #ffffff; /* Texto em branco para contrastar com o azul oficial */
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 1.5rem;
   }
 
- 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem 0 2rem;
+  .subFooter {
+    flex-direction: column;
     text-align: center;
-    background-color: #e30613;
-    font-weight: bold;
-    bottom: 0;
-    width: 100%;
-    position:static;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
 
-    p {
-      font-size: 1rem;
-      color: #272727;
-      margin: 0;
-      font-weight: bold;
-    }
+  .direita {
+    text-align: center;
+  }
+
+  .container {
+    padding: 1rem;
   }
 }
 
+@media (max-width: 480px) {
+  .esquerda h2,
+  .direita h2 {
+    font-size: 1rem;
+  }
 
-@media (max-width: 768px) {
-  .footer {
-    .subFooter {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.5rem;
-
-    .direita {
-        text-align: center; 
-      }
-    }
+  .esquerda p,
+  .direita p,
+  .container p {
+    font-size: 0.85rem;
   }
 }

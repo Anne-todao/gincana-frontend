@@ -105,7 +105,7 @@ export default function App() {
    
                <div className={styles.registerLink}>
                    <span>Já tem uma conta? </span>
-                   <Link to="/Login" className={styles.registerAnchor}>
+                   <Link to="/login" className={styles.registerAnchor}>
                        Faça login
                    </Link><br />
                </div>

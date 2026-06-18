@@ -3,6 +3,9 @@
   padding: 40px;
   overflow-y: auto;
    margin-left: 40px;
+   display: flex;        
+  flex-direction: column;
+  align-items: center;
 }
 
 .containerHead {
@@ -27,6 +30,10 @@
   padding: 16px;
   --outer-r: 24px;
   --p-distance: 12px;
+  width: 100% !important;
+  max-width: 1600px !important;
+  margin: 0 auto 20px auto;
+  box-sizing: border-box;
 }
 
 .carousel-track {
@@ -34,7 +41,7 @@
 }
 
 .carousel-item {
-  position: relative;
+position: relative;
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
@@ -45,6 +52,15 @@
   background-color: #1B1722;
   overflow: hidden;
   cursor: grab;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+.carousel-item img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover; 
+  display: block;
 }
 
 .carousel-item:active {
@@ -164,4 +180,172 @@
 }
 .CarouselImg{
   font-size: 30px;
+}
+
+/*Parte Inferior*/
+
+:global(body), 
+:global(#root) {
+    background-color: #cfcfcf !important;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.body {
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 36px 56px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.Missao,
+.Func,
+.dest,
+.resp,
+.Entre {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+
+.tittleMissao,
+.Tittlefunc,
+.TitleDest,
+.TittleResp,
+.TittleEntre {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 12px 0;
+    color: #0b1a6e;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+
+.tittleMissao svg,
+.Tittlefunc svg,
+.TitleDest svg,
+.TittleResp svg,
+.TittleEntre svg {
+    color: #0b1a6e !important;
+    font-size: 2.2rem;
+    flex-shrink: 0;
+}
+
+
+.TextMissao,
+.Textdest,
+.TextEntre {
+    color: #2d3748; 
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 48px;
+}
+
+.listfunc,
+.ListResp {
+    margin: 0;
+    padding-left: 72px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listfunc li,
+.ListResp li {
+    color: #2d3748;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+
+
+
+
+@media (max-width: 992px) {
+    .layout {
+        margin-left: 0;
+        padding: 24px 16px;
+    }
+
+    .containerHead {
+        padding: 32px 24px;
+    }
+
+    .carousel-container {
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    .body {
+        max-width: 100%;
+        padding: 32px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout {
+        align-items: stretch;
+    }
+
+    .body {
+        padding: 28px 16px;
+        gap: 28px;
+    }
+
+    .tittleMissao,
+    .Tittlefunc,
+    .TitleDest,
+    .TittleResp,
+    .TittleEntre {
+        font-size: 1.6rem;
+    }
+
+    .TextMissao,
+    .Textdest,
+    .TextEntre {
+        padding-left: 0;
+        font-size: 1rem;
+    }
+
+    .listfunc,
+    .ListResp {
+        padding-left: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .containerHead {
+        font-size: 1.6rem;
+        padding: 28px 16px;
+    }
+
+    .body {
+        padding: 24px 12px;
+        gap: 24px;
+    }
+
+    .tittleMissao,
+    .Tittlefunc,
+    .TitleDest,
+    .TittleResp,
+    .TittleEntre {
+        font-size: 1.4rem;
+        gap: 8px;
+    }
+
+    .listfunc,
+    .ListResp {
+        padding-left: 18px;
+    }
 }

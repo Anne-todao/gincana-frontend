@@ -2,9 +2,15 @@ import { useState, useEffect } from 'react';
 import { buscarRanking } from '../../services/api';
 import styles from './Dashboard.module.css';
 import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer'
 
 export default function Dashboard() {
     const [ranking, setRanking] = useState([]);
+    
+    // Variáveis de controle para o progresso dinâmico (opcional)
+    const arrecadado = 200;
+    const metaGlobal = 1000;
+    const percentualProgresso = Math.min((arrecadado / metaGlobal) * 100, 100);
 
     useEffect(() => {
         async function carregarRanking() {
@@ -27,57 +33,60 @@ export default function Dashboard() {
 
     return (
         <>
-        <Navbar />
-    
-   
+        <div className={styles.dashboardContainer}>
+            <Navbar />
 
-            <div className={styles.mainContent}>
-                <div className={styles.header}>
+            <main className={styles.mainContent}>
+                <header className={styles.header}>
                     <h1 className={styles.pageTitle}>Dashboard Estratégico</h1>
                     <p className={styles.pageSubtitle}>Sistema de acompanhamento em tempo real.</p>
-                </div>
+                </header>
 
-                <div className={styles.cardsContainer}>
-                    <div className={styles.card}>
+                <section className={styles.cardsContainer}>
+                    <article className={styles.card}>
                         <div className={`${styles.cardIcon} ${styles.iconPink}`}>📦</div>
                         <div className={styles.cardInfo}>
                             <span className={styles.cardLabel}>Pacotes Arrecadados</span>
                             <span className={styles.cardValue}>
-                                200 <small>Pacotes</small>
+                                {arrecadado} <small>Pacotes</small>
                             </span>
                         </div>
-                    </div>
+                    </article>
 
-                    <div className={styles.card}>
+                    <article className={styles.card}>
                         <div className={`${styles.cardIcon} ${styles.iconYellow}`}>🏆</div>
                         <div className={styles.cardInfo}>
                             <span className={styles.cardLabel}>Meta Global</span>
                             <span className={styles.cardValue}>
-                                1000 <small>Pacotes</small>
+                                {metaGlobal} <small>Pacotes</small>
                             </span>
                         </div>
-                    </div>
+                    </article>
 
-                    <div className={`${styles.card} ${styles.cardGreen}`}>
+                    <article className={`${styles.card} ${styles.cardGreen}`}>
                         <div className={styles.cardIcon}>🚀</div>
                         <div className={styles.cardInfo}>
                             <span className={styles.cardLabel}>Turma Líder</span>
                             <span className={styles.cardValue}>Turma B</span>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </section>
 
-                <div className={styles.progressSection}>
+                <section className={styles.progressSection}>
                     <h2 className={styles.sectionTitle}>Progresso da Gincana</h2>
-                    <p className={styles.sectionSubtitle}>Rumo à meta de 1000 pacotes.</p>
+                    <p className={styles.sectionSubtitle}>Rumo à meta de {metaGlobal} pacotes.</p>
                     <div className={styles.progressBarContainer}>
-                        <div className={styles.progressBarFill} style={{ width: '20%' }}></div>
+                        <div
+                            className={styles.progressBarFill}
+                            style={{ width: `${percentualProgresso}%` }}
+                        ></div>
                     </div>
-                </div>
+                </section>
 
-                <div className={styles.rankingSection}>
+                <section className={styles.rankingSection}>
                     <h3 className={styles.rankingTitle}>
-                        <span className={styles.rankingIcon}>📊</span> Ranking Oficial
+                        <span className={styles.rankingIcon}>📊</span>
+                        <span>Ranking Oficial</span>
                     </h3>
 
                     <div className={styles.tabelaCustomizada}>
@@ -95,14 +104,12 @@ export default function Dashboard() {
                                 ranking.map((equipe, index) => (
                                     <div className={styles.linha} key={equipe.id || index}>
                                         <div className={styles.celula}>
-                                            <span
-                                                className={`${styles.badgePosicao} ${obterClassePosicao(index)}`}>
+                                            <span className={`${styles.badgePosicao} ${obterClassePosicao(index)}`}>
                                                 {index + 1}º Lugar
                                             </span>
                                         </div>
-
                                         <div className={styles.celula}>
-                                            {equipe.turma || '2º Ano A'}
+                                            {equipe.turma || 'Turma Exemplo'}
                                         </div>
                                         <div className={styles.celula}>{equipe.fraldas || 0}</div>
                                         <div className={styles.celula}>
@@ -119,9 +126,11 @@ export default function Dashboard() {
                             )}
                         </div>
                     </div>
-                </div>
-            </div>
-      
+                </section>
+            </main>
+       
+        </div>
+        <Footer /> 
         </>
     );
 }

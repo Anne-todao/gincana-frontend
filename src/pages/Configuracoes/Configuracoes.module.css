@@ -1,0 +1,271 @@
+.pageContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: #dedede;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mainContent {
+    flex: 1;
+    margin-left: 40px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+    background-color: #dedede;
+}
+
+.headerPage {
+    border-bottom: 2px solid #bfbebe;
+    padding-bottom: 15px;
+    align-self: flex-start;
+    width: 100%;
+}
+
+.headerPage h1 {
+    margin: 0;
+    color: #0b1a6e;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.sectionTag {
+    color: #ff0000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+}
+
+.summaryCards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.4), 0 1px 3px rgb(202, 201, 201);
+    border: 1px solid #e6ecf1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+}
+
+.cardLabel {
+    display: block;
+    color: #444444;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.card strong {
+    color: #0b1a6e;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.progressSection,
+.formSection {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.4), 0 1px 3px rgb(202, 201, 201);
+    border: 1px solid #e6ecf1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.progressHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.progressLabel {
+    color: #666666;
+    margin: 0 0 6px 0;
+    font-size: 0.9rem;
+}
+
+.progressHeader h3 {
+    margin: 0;
+    color: #333333;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.progressPercent {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0b1a6e;
+}
+
+.progressBarContainer {
+    width: 100%;
+    height: 16px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 16px 0;
+}
+
+.progressBarFill {
+    height: 100%;
+    background: #4caf50;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progressFooter {
+    display: flex;
+    justify-content: space-between;
+    color: #4a5568;
+    font-size: 0.95rem;
+    gap: 12px;
+}
+
+.formSection h2 {
+    margin: 0 0 20px;
+    color: #333333;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.inputGroup,
+.inputGroupFull {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inputGroup {
+    flex: 1;
+    min-width: 220px;
+}
+
+.inputGroupFull {
+    width: 100%;
+}
+
+.inputGroup label,
+.inputGroupFull label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444444;
+}
+
+.inputGroup input,
+.inputGroupFull textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    background-color: #dedede;
+    font-size: 0.95rem;
+    color: #333333;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.inputGroup input:focus,
+.inputGroupFull textarea:focus {
+    border-color: #0b1a6e;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(11, 26, 110, 0.15);
+}
+
+.btnSalvar {
+    background-color: #e10613;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    align-self: flex-end;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.btnSalvar:hover {
+    background-color: #b90510;
+}
+
+@media (max-width: 1024px) {
+    .summaryCards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        margin-left: 0;
+        padding: 24px 16px;
+    }
+
+    .summaryCards {
+        grid-template-columns: 1fr;
+    }
+
+    .progressSection,
+    .formSection {
+        padding: 24px 18px;
+    }
+
+    .progressHeader,
+    .progressFooter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btnSalvar {
+        width: 100%;
+        align-self: stretch;
+    }
+}
+
+@media (max-width: 480px) {
+    .headerPage h1 {
+        font-size: 1.8rem;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .card strong {
+        font-size: 1.8rem;
+    }
+
+    .progressHeader h3 {
+        font-size: 1.1rem;
+    }
+}

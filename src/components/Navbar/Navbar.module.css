@@ -111,3 +111,30 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1000; 
 }
+
+@media (max-width: 768px) {
+  .menuButton {
+    top: 12px;
+    left: 10px;
+    padding: 9px 12px;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .navbar .container {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .navbar h1 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.55rem 0.6rem;
+  }
+}

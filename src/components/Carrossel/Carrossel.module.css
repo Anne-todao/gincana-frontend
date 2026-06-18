@@ -1,6 +1,6 @@
 .carrosselContainer {
   position: relative;
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -107,4 +107,45 @@
   background-color: #ff0000; 
   width: 24px;
   border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .carrosselTrack {
+    height: 320px;
+  }
+
+  .legenda {
+    padding: 22px 14px 32px;
+  }
+
+  .legenda h3 {
+    font-size: 1.2rem;
+  }
+
+  .legenda p {
+    font-size: 0.9rem;
+  }
+
+  .botaoSetas {
+    padding: 10px 12px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carrosselTrack {
+    height: 240px;
+  }
+
+  .legenda {
+    padding: 18px 12px 24px;
+  }
+
+  .legenda h3 {
+    font-size: 1rem;
+  }
+
+  .legenda p {
+    font-size: 0.85rem;
+  }
 }

@@ -1,180 +1,97 @@
-
-.layout {
+.dashboardContainer {
   display: flex;
-  height: 100vh;
-  background-color: #f2f2f2;
-  font-family: sans-serif;
+  min-height: 100vh;
+  background-color: #dedede;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
-
-.sidebar {
-  width: 250px;
-  background-color: #0b1a6e;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.logoContainer {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 40px;
-}
-
-.logoIcon {
-  background-color: #d32f2f;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.logoTitle {
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.2;
-}
-
-.navMenu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  flex: 1;
-}
-
-.navItem {
-  background-color: #90a4ae;
-  color: #111;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  text-align: left;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.navItemActive {
-  background-color: #e0e0e0;
-}
-
-.sidebarFooter {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.userProfile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.userAvatar {
-  background-color: #e0e0e0;
-  color: #0b1a6e;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-.userInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.userName {
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.userRole {
-  font-size: 0.8rem;
-  color: #ccc;
-}
-
-.logoutButton {
-  background-color: #e0e0e0;
-  color: #d32f2f;
-  border: none;
-  padding: 8px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 
 .mainContent {
   flex: 1;
+  margin-left: 40px;
   padding: 40px;
-  overflow-y: auto;
-   margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+  background-color: #dedede;
+  width: 100%;
 }
 
 .header {
-  margin-bottom: 30px;
+  border-bottom: 2px solid #bfbebe;
+  padding-bottom: 15px;
+  align-self: flex-start;
+  width: 100%;
 }
 
 .pageTitle {
-  margin: 0 0 5px 0;
-  font-size: 1.8rem;
-  color: #222;
+  color: #0b1a6e;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
 }
 
 .pageSubtitle {
-  margin: 0;
-  color: #666;
-  font-size: 0.9rem;
+   color: #ff0000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
 }
 
 .cardsContainer {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
 .card {
-  background-color: #e6e8eb;
-  padding: 15px 20px;
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.4), 0 1px 3px rgb(202, 201, 201);
+  border: 1px solid #e6ecf1;
   display: flex;
   align-items: center;
-  gap: 15px;
-  min-width: 220px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  gap: 18px;
+  box-sizing: border-box;
 }
 
 .cardGreen {
-  background-color: #4caf50;
-  color: white;
+  background: #4caf50;
+  color: #ffffff;
+}
+
+.cardGreen .cardLabel,
+.cardGreen .cardValue,
+.cardGreen .cardValue small {
+  color: #ffffff;
 }
 
 .cardIcon {
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  flex-shrink: 0;
 }
 
 .iconPink { background-color: #fce4ec; }
 .iconYellow { background-color: #fff8e1; }
+
+.cardGreen .cardIcon {
+  background-color: rgba(255, 255, 255, 0.18);
+}
 
 .cardInfo {
   display: flex;
@@ -182,55 +99,207 @@
 }
 
 .cardLabel {
-  font-size: 0.75rem;
-  font-weight: bold;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #444444;
   text-transform: uppercase;
-  margin-bottom: 5px;
-  opacity: 0.8;
+  margin-bottom: 4px;
 }
 
 .cardValue {
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0b1a6e;
+  line-height: 1;
 }
 
 .cardValue small {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: normal;
+  color: #666666;
 }
 
-.rankingArea {
-  background-color: #e6e8eb;
-  border-radius: 12px;
-  padding: 20px;
-  min-height: 400px;
+.progressSection,
+.rankingSection {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 7px 3px 15px rgba(0, 0, 0, 0.4), 0 1px 3px rgb(202, 201, 201);
+  border: 1px solid #e6ecf1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.tabelaCustomizada {
-  background-color: white;
-  border-radius: 8px;
+.sectionTitle,
+.rankingTitle {
+  color: #333333;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rankingTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.sectionSubtitle {
+  color: #666666;
+  font-size: 0.9rem;
+  margin: 6px 0 16px;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 16px;
+  background: #e5e7eb;
+  border-radius: 10px;
   overflow: hidden;
 }
 
-.cabecalho, .linha {
+.progressBarFill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+}
+
+.tabelaCustomizada {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.corpoLista {
   display: flex;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
+  flex-direction: column;
+}
+
+.cabecalho,
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr 1.2fr 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 0;
 }
 
 .cabecalho {
-  font-weight: bold;
-  background-color: #f9f9f9;
-  color: #555;
+  color: #555555;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 14px;
+  margin-bottom: 4px;
 }
 
-.celulaHeader, .celula {
-  width: 33.3%;
+.celula,
+.celulaHeader {
   text-align: left;
+  padding: 0 14px;
 }
+
+.linha {
+  border-bottom: 1px solid #edf2f7;
+}
+
+.linha:last-child {
+  border-bottom: none;
+}
+
+.celula strong {
+  color: #0b1a6e;
+  font-weight: 700;
+}
+
+.badgePosicao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.badgeOuro { background-color: rgba(254, 240, 138, 0.6); color: #854d0e; }
+.badgePrata { background-color: rgba(226, 232, 240, 0.8); color: #475569; }
+.badgeBronze { background-color: rgba(254, 202, 202, 0.6); color: #991b1b; }
+.badgeNormal { background-color: #f1f5f9; color: #334155; }
 
 .linhaVazia {
-  padding: 30px;
   text-align: center;
-  color: #888;
+  color: #64748b;
+  padding: 40px 20px;
+  background-color: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+    padding: 24px 16px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .progressSection,
+  .rankingSection {
+    padding: 24px 18px;
+  }
+
+  .cabecalho,
+  .linha {
+    grid-template-columns: 0.7fr 1.3fr 0.8fr 1fr 0.8fr 0.8fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .cardValue {
+    font-size: 1.7rem;
+  }
+
+  .cabecalho {
+    display: none;
+  }
+
+  .linha {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 14px 0;
+  }
+
+  .celula,
+  .celulaHeader {
+    padding: 0 10px;
+  }
 }

@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import styles from '../Doacoes/Doacoes.module.css';
+import Footer from '../../components/Footer/Footer'
 
 function Doacoes() {
   const [turma, setTurma] = useState('');
   const [fraldas, setFraldas] = useState('');
   const [listaDoacoes, setListaDoacoes] = useState([]);
 
-  const listaOrdenada = listaDoacoes;
-  
   const Salvar = (e) => {
     e.preventDefault();
     if (!turma) {
@@ -21,34 +20,34 @@ function Doacoes() {
     }
 
     const dataAtual = new Date().toLocaleDateString('pt-BR');
-
-    const usuarioLogado = 'Prof Admin'; 
+    const usuarioLogado = 'Prof Admin';
 
     const novaDoacao = {
       id: Date.now(),
-      turma: turma,
+      turma,
       quantidade: parseInt(fraldas, 10),
-      validade: dataAtual,       
-      responsavel: usuarioLogado 
+      validade: dataAtual,
+      responsavel: usuarioLogado,
     };
 
-    setListaDoacoes([...listaDoacoes, novaDoacao]);
-
+    setListaDoacoes((doacoesAtuais) => [...doacoesAtuais, novaDoacao]);
     setTurma('');
     setFraldas('');
   };
 
   const deletarDoacao = (id) => {
-    setListaDoacoes(listaDoacoes.filter(doacao => doacao.id !== id));
-   };
+    setListaDoacoes((doacoesAtuais) =>
+      doacoesAtuais.filter((doacao) => doacao.id !== id)
+    );
+  };
 
   return (
+    <>
     <div className={styles.dashboardContainer}>
       <Navbar />
       <main className={styles.mainContent}>
-
         <header className={styles.headerPage}>
-          <h2>Gerenciar Doações</h2>
+          <h2 className={styles.pageTitle}>Gerenciar Doações</h2>
           <h5>Gerencie, crie, remova, e edite doações.</h5>
         </header>
 
@@ -74,23 +73,25 @@ function Doacoes() {
           <form onSubmit={Salvar} className={styles.form}>
             <div className={styles.inputGroup}>
               <label htmlFor="turma">Turma</label>
-              <select 
-                id="turma" 
-                value={turma} 
+              <select
+                id="turma"
+                value={turma}
                 onChange={(e) => setTurma(e.target.value)}
                 required
               >
-                <option value="" disabled>Selecionar uma turma</option>
+                <option value="" disabled>
+                  Selecionar uma turma
+                </option>
                 <option value="2TDS">2TDS</option>
               </select>
-            </div>      
+            </div>
 
             <div className={styles.inputGroup}>
               <label htmlFor="fraldas">Quantidade</label>
-              <input 
+              <input
                 id="fraldas"
-                type="number" 
-                value={fraldas} 
+                type="number"
+                value={fraldas}
                 onChange={(e) => setFraldas(e.target.value)}
                 placeholder="ex: 45"
                 min="1"
@@ -98,6 +99,10 @@ function Doacoes() {
                 required
               />
             </div>
+
+            <button type="submit" className={styles.btnSalvar}>
+              Salvar
+            </button>
           </form>
         </section>
 
@@ -118,27 +123,29 @@ function Doacoes() {
                   <th>Ações</th>
                 </tr>
               </thead>
-              <body>
-  {listaOrdenada.length === 0 ? (
+              <tbody>
+                {listaDoacoes.length === 0 ? (
                   <tr>
-                    <td colSpan="5" className={styles.noData}>Nenhuma doação registrada ainda.</td>
+                    <td colSpan="4" className={styles.noData}>
+                      Nenhuma doação registrada ainda.
+                    </td>
                   </tr>
                 ) : (
-                  listaOrdenada.map((item, index) => {
+                  listaDoacoes.map((item, index) => {
                     let classePosicao = styles.rowCinza;
-                    if (index === 1) classePosicao = styles.rowSegundo; 
-                    if (index === 2) classePosicao = styles.rowTerceiro; 
+                    if (index === 0) classePosicao = styles.rowPrimeiro;
+                    if (index === 1) classePosicao = styles.rowSegundo;
+                    if (index === 2) classePosicao = styles.rowTerceiro;
                     return (
                       <tr key={item.id} className={`${styles.row} ${classePosicao}`}>
-                        <td style={{ fontWeight: 'bold' }}>{index + 1}</td> =
                         <td>{item.turma}</td>
                         <td>{item.quantidade}</td>
                         <td>{item.validade}</td>
                         <td>
                           <div className={styles.acoesCell}>
                             <span>{item.responsavel}</span>
-                            <button 
-                              className={styles.btnExcluir} 
+                            <button
+                              className={styles.btnExcluir}
                               onClick={() => deletarDoacao(item.id)}
                             >
                               EXCLUIR
@@ -149,16 +156,16 @@ function Doacoes() {
                     );
                   })
                 )}
-              </body>
+              </tbody>
             </table>
           </div>
 
         </section>
 
-        <button type="submit" onClick={Salvar} className={styles.btnSalvar}>Salvar</button>
-
       </main>
     </div>
+    <Footer />
+    </>
   );
 }
 

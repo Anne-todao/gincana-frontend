@@ -85,7 +85,7 @@ export default function App() {
    
                <div className={styles.registerLink}>
                    <span>Não tem uma conta? </span>
-                   <Link to="/Cadastro" className={styles.registerAnchor}>
+                   <Link to="/cadastro" className={styles.registerAnchor}>
                        Cadastre-se
                    </Link><br />
                </div>

@@ -1,177 +1,197 @@
-
 .pageBackground {
-  min-height: 100vh;
-  background-color: #f4f6f9;
-  width: 100%;
-  box-sizing: border-box;
-  flex: 1;
-  overflow-y: auto;
-   margin-left: 20px;
+    display: flex;
+    min-height: 100vh;
+    background-color:  #dedede;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
+
 .contentContainer {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+    flex: 1; 
+    margin-left: 40px; 
+    padding: 40px; 
+    display: flex;
+    flex-direction: column;
+    gap: 24px; 
+    box-sizing: border-box;
 }
 
 
 .headerSection {
-  border-bottom: 2px solid #e0e0e0;
-  padding-bottom: 15px;
+    border-bottom: 2px solid #bfbebe;
+    padding-bottom: 15px;
+    align-self: flex-start;
+    width: 100%;
 }
 
 .sectionTag {
-  color: #ff0000; 
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  margin: 0 0 5px 0;
+    color: #ff0000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 5px 0;
 }
 
 .title {
-  color: #0b1a6e; 
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin: 0;
+    color: #0b1a6e;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
 }
 
-.formSection, .tableSection {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+.formSection,
+.tableSection {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 32px;      
+    box-shadow: 7px 3px 15px rgba(0, 0, 0,0.4), 0 1px 3px rgb(202, 201, 201); 
+    border: 1px solid #e6ecf1;
+
+    width: 100%;
+    max-width: 900px;    
+    margin: 0 auto;      
 }
 
-.formSection h2, .tableSection h2 {
-  color: #333333;
-  font-size: 1.4rem;
-  margin: 0 0 8px 0;
-  font-weight: 700;
+.formSection h2,
+.tableSection h2 {
+    color: #333333;
+    font-size: 1.3rem;
+    margin: 0 0 8px 0;
+    font-weight: 700;
 }
 
 .subtext {
-  color: #666666;
-  font-size: 0.95rem;
-  margin: 0 0 25px 0;
+    color: #666666;
+    font-size: 0.9rem;
+    margin: 0 0 25px 0;
+    line-height: 1.4;
 }
 
-
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .inputGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .inputGroup label {
-  color: #444444;
-  font-size: 0.9rem;
-  font-weight: 600;
+    color: #444444;
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .inputGroup input {
-  padding: 12px 16px;
-  font-size: 1rem;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  background-color: #fafafa;
-  transition: all 0.2s ease-in-out;
-  outline: none;
-  color: #333333;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    border: 1px solid #cccccc;
+    border-radius: 10px; 
+    background-color: #dedede;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    color: #333333;
 }
 
 .inputGroup input:focus {
-  border-color: #0b1a6e;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(11, 26, 110, 0.15);
+    border-color: #0b1a6e;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(11, 26, 110, 0.15);
 }
-
 
 .buttonWrapper {
-  margin-top: 10px;
-  display: flex;
-  justify-content: flex-start;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
 }
 
 
+.buttonWrapper button,
+.buttonWrapper div,
+.buttonWrapper :global(.btnGincana) { 
+    width: 100% !important;
+    padding: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+}
+
 .turmasTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: left;
 }
 
 .turmasTable th {
-  background-color: #f8f9fa;
-  color: #555555;
-  font-weight: 700;
-  padding: 14px 18px;
-  font-size: 0.9rem;
-  border-bottom: 2px solid #e2e8f0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+    background-color: #f8f9fa;
+    color: #555555;
+    font-weight: 700;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .turmasTable td {
-  padding: 16px 18px;
-  color: #4a5568;
-  font-size: 0.95rem;
-  border-bottom: 1px solid #edf2f7;
+    padding: 14px;
+    color: #4a5568;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #edf2f7;
 }
 
 .turmasTable tbody tr:nth-child(even) {
-  background-color: #fbfbfb;
+    background-color: #fbfbfb;
 }
 
 .turmasTable tbody tr:hover {
-  background-color: rgba(11, 26, 110, 0.02);
-  transition: background-color 0.15s ease-in-out;
+    background-color: rgba(11, 26, 110, 0.02);
+    transition: background-color 0.15s ease-in-out;
 }
 
 .turmasTable td strong {
-  color: #0b1a6e;
-  font-weight: 600;
+    color: #0b1a6e;
+    font-weight: 600;
 }
 
-
 .emptyState {
-  padding: 40px;
-  text-align: center;
-  background-color: #f8fafc;
-  border: 2px dashed #cbd5e1;
-  border-radius: 8px;
-  margin-top: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #dedede;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    margin-top: 15px;
 }
 
 .emptyState p {
-  color: #64748b;
-  font-size: 1rem;
-  margin: 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
-  .contentContainer {
-    padding: 20px 15px;
-  }
-  
-  .formSection, .tableSection {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 1.8rem;
-  }
-  
-  /* Permite rolagem horizontal na tabela se a tela for muito pequena */
-  .tableSection {
-    overflow-x: auto;
-  }
+    .contentContainer {
+        padding: 20px 15px;
+        margin-left: 0; 
+    }
+
+    .formSection,
+    .tableSection {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .tableSection {
+        overflow-x: auto;
+    }
 }

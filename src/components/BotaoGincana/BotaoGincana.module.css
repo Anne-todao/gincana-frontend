@@ -18,3 +18,10 @@
 .botaoGincana:active {
   transform: scale(0.98);
 }
+
+@media (max-width: 480px) {
+  .botaoGincana {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+}

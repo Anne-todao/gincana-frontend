@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { cadastrarTurma, listarTurmas } from '../../services/api';
 import BotaoGincana from '../../components/BotaoGincana/BotaoGincana';
 import styles from './Turma.module.css';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';3
+import Footer from '../../components/Footer/Footer'
 
 export default function Turmas() {
   const [turmas, setTurmas] = useState([]);
@@ -45,12 +46,14 @@ const CadastrarTurma = async (e) => {
   };
 
   return (
+    <>
     <div className={styles.pageBackground}>
       <Navbar />
       <main className={styles.contentContainer}>
         <div className={styles.headerSection}>
-          <p className={styles.sectionTag}>PAINEL ADMINISTRATIVO</p>
           <h1 className={styles.title}>Gestão de Turmas</h1>
+          <p className={styles.sectionTag}>PAINEL ADMINISTRATIVO</p>
+          
         </div>
 
 
@@ -119,6 +122,7 @@ const CadastrarTurma = async (e) => {
                 </section>
             </main>
             </div>
+            <Footer />
+            </>
         );
     }
-

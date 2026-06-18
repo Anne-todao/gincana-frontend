@@ -26,6 +26,10 @@ function Navbar () {
             <li><Link className={style['nav-link']} to="/doacoes" onClick={toggleMenu}>Doações</Link></li>
             <li><Link className={style['nav-link']} to="/dashboard" onClick={toggleMenu}>Dashboard</Link></li>
             <li><Link className={style['nav-link']} to="/login" onClick={toggleMenu}>Login</Link></li>
+            <li><Link className={style['nav-link']} to="/gerenciarOngs" onClick={toggleMenu}>Gerenciar</Link></li>
+            <li><Link className={style['nav-link']} to="/sobreNos" onClick={toggleMenu}>Sobre Nós</Link></li>
+            <li><Link className={style['nav-link']} to="/configuracoes" onClick={toggleMenu}>Configurações</Link></li>
+
           </ul>
         </div>
 
