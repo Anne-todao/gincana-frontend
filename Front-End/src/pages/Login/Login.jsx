@@ -13,24 +13,40 @@ export default function App() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        // Validação de campos vazios
         if (!email.trim() || !password.trim()) {
             setErro('Por favor, preencha todos os campos antes de entrar.');
             return;
         }
 
+        const credenciais = {
+            email: email.trim(),
+            senha: password,
+            password: password,
+        };
+
         try {
             setErro('');
 
-            // Faz a requisição de login enviando as credenciais para o back-end
-            const resposta = await api.post('/usuarios/login', { email, senha: password });
 
-            // Salva os dados do usuário (incluindo o id_usuario real) no localStorage
-            localStorage.setItem('usuarioLogado', JSON.stringify(resposta.data));
+            const resposta = await api.post('/auth/login', credenciais);
 
-            navigate('/');
+            if (resposta && resposta.data) {
+
+                localStorage.setItem('usuarioLogado', JSON.stringify(resposta.data));
+
+
+                navigate('/');
+            }
         } catch (err) {
             console.error('Erro ao fazer login:', err);
-            setErro(err.response?.data?.mensagem || 'E-mail ou senha incorretos.');
+
+         
+            const mensagemErro =
+                err.response?.data?.mensagem ||
+                err.response?.data?.error ||
+                'E-mail ou senha incorretos.';
+            setErro(mensagemErro);
         }
     };
 
@@ -62,7 +78,9 @@ export default function App() {
                         <div className={styles.loginContainer}>
                             <form className={styles.loginForm} onSubmit={handleSubmit}>
                                 {erro && (
-                                    <p className={styles.errorMessage} style={{ color: 'red' }}>
+                                    <p
+                                        className={styles.errorMessage}
+                                        style={{ color: 'red', fontWeight: 'bold' }}>
                                         {erro}
                                     </p>
                                 )}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import styles from '../Doacoes/Doacoes.module.css';
 import Footer from '../../components/Footer/Footer';
@@ -10,58 +10,76 @@ function Doacoes() {
     const [listaDoacoes, setListaDoacoes] = useState([]);
     const [turmasCadastradas, setTurmasCadastradas] = useState([]);
 
-    useEffect(() => {
-        carregarDados();
-    }, []);
-
-    const carregarDados = async () => {
+    const carregarDados = useCallback(async () => {
         try {
             const [turmasData, doacoesData] = await Promise.all([listarTurmas(), listarDoacoes()]);
-            setTurmasCadastradas(turmasData);
-            setListaDoacoes(doacoesData);
+            setTurmasCadastradas(turmasData || []);
+            setListaDoacoes(doacoesData || []);
         } catch (err) {
             console.error('Erro ao buscar dados do servidor:', err);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        let ativo = true;
+
+        const inicializar = async () => {
+            if (ativo) {
+                await carregarDados();
+            }
+        };
+
+        inicializar();
+
+        return () => {
+            ativo = false;
+        };
+    }, [carregarDados]);
 
     const Salvar = async (e) => {
         e.preventDefault();
+
         if (!idTurma) {
             alert('Por favor, selecione a turma!');
             return;
         }
-        if (!quantidade) {
-            alert('Por favor, insira a quantidade!');
+        if (!quantidade || Number(quantidade) <= 0) {
+            alert('Por favor, insira uma quantidade válida!');
             return;
         }
 
+        // 🔍 Busca direta e segura do ID do usuário logado
         const usuarioData = localStorage.getItem('usuarioLogado');
         const usuarioObj = usuarioData ? JSON.parse(usuarioData) : null;
-        const idUsuarioLogado = usuarioObj ? usuarioObj.id_usuario : 1;
+        const idUsuarioLogado = usuarioObj?.id_usuario || usuarioObj?.id || usuarioObj?.usuario?.id;
 
         const novaDoacao = {
-            id_turma: parseInt(idTurma, 10),
-            id_usuario: idUsuarioLogado,
-            quantidade: parseInt(quantidade, 10),
+            id_turma: Number(idTurma),
+            id_usuario: Number(idUsuarioLogado),
+            quantidade: Number(quantidade),
         };
 
         try {
             await criarDoacao(novaDoacao);
             setIdTurma('');
             setQuantidade('');
-            carregarDados();
+            await carregarDados();
+            alert('Doação registrada com sucesso!');
         } catch (err) {
             console.error('Erro ao salvar doação:', err);
-            alert('Erro ao salvar doação.');
+            alert(
+                err.response?.data?.error ||
+                    'Erro ao salvar doação. Verifique a conexão ou os dados enviados.',
+            );
         }
     };
-
     const deletarDoacao = async (id_doacoes) => {
         if (!window.confirm('Tem certeza que deseja excluir esta doação?')) return;
 
         try {
             await excluirDoacao(id_doacoes);
-            carregarDados();
+            await carregarDados();
+            alert('Doação excluída com sucesso!');
         } catch (err) {
             console.error('Erro ao deletar doação:', err);
             alert('Erro ao deletar doação.');
@@ -89,7 +107,7 @@ function Doacoes() {
                             <span className={styles.cardTitle}>Total</span>
                             <strong className={styles.cardValue}>
                                 {listaDoacoes.reduce(
-                                    (acc, curr) => acc + Number(curr.quantidade),
+                                    (acc, curr) => acc + Number(curr.quantidade || 0),
                                     0,
                                 )}
                             </strong>
@@ -142,7 +160,6 @@ function Doacoes() {
                     <section className={styles.historicoSection}>
                         <div className={styles.historicoHeader}>
                             <button className={styles.btnHistorico}>Histórico de Doações</button>
-                            <button className={styles.btnFiltrar}>Filtrar por turma...</button>
                         </div>
 
                         <div className={styles.tableWrapper}>
@@ -158,7 +175,10 @@ function Doacoes() {
                                 <tbody>
                                     {listaDoacoes.length === 0 ? (
                                         <tr>
-                                            <td colSpan="4" className={styles.noData}>
+                                            <td
+                                                colSpan="4"
+                                                className={styles.noData}
+                                                style={{ textAlign: 'center', padding: '15px' }}>
                                                 Nenhuma doação registrada ainda.
                                             </td>
                                         </tr>
@@ -173,11 +193,15 @@ function Doacoes() {
                                                 ? new Date(item.data_registro).toLocaleDateString(
                                                       'pt-BR',
                                                   )
-                                                : '';
+                                                : item.criado_em
+                                                  ? new Date(item.criado_em).toLocaleDateString(
+                                                        'pt-BR',
+                                                    )
+                                                  : '---';
 
                                             return (
                                                 <tr
-                                                    key={item.id_doacoes}
+                                                    key={item.id_doacoes || index}
                                                     className={`${styles.row} ${classePosicao}`}>
                                                     <td>
                                                         {item.nome_curso
@@ -188,9 +212,6 @@ function Doacoes() {
                                                     <td>{dataFormatada}</td>
                                                     <td>
                                                         <div className={styles.acoesCell}>
-                                                            <span>
-                                                                ID Usuário: {item.id_usuario}
-                                                            </span>
                                                             <button
                                                                 className={styles.btnExcluir}
                                                                 onClick={() =>

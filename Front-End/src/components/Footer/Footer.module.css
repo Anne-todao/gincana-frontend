@@ -1,16 +1,16 @@
 .footer {
-  background-color: #060e3d; /* Azul escuro bem fechado, perfeito para fundo de footer */
+  background-color: #060e3d; 
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
   width: 100%;
   padding: 2rem 0 0 0;
-  margin-top: auto; 
+  margin-top: auto;
   box-sizing: border-box;
 }
 
 .subFooter {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto 2rem auto;
@@ -19,16 +19,16 @@
   box-sizing: border-box;
 }
 
-.esquerda, 
+.esquerda,
 .direita {
-  flex: 1; 
+  flex: 1;
 }
 
 .esquerda h2,
 .direita h2 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ffffff; /* Mudado para branco para dar leitura perfeita sobre o fundo escuro */
+  color: #ffffff;
   margin-bottom: 0.8rem;
   letter-spacing: 0.5px;
   margin-top: 0;
@@ -47,7 +47,7 @@
 }
 
 .container {
-  max-width: 100%; 
+  max-width: 100%;
   margin: 0 auto;
   padding: 1.2rem 2rem;
   text-align: center;
